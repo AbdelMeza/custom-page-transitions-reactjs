@@ -1,4 +1,6 @@
 import { Route, Routes } from "react-router-dom";
+import MenuButton from "../Components/MenuButton/MenuButton";
+import TransitionContainer from "../Components/TransitionContainer/TransitionContainer";
 
 function App() {
   /*
@@ -13,10 +15,12 @@ function App() {
   because it would interfere with our custom page loading animation.
 */
 
-  return (
+  return <>
+    <MenuButton /> 
+    <TransitionContainer />
     <Routes>
       <Route
-        path="/home"
+        path="/"
         element={<span className="page-message">Welcome to home page</span>}
       />
       <Route
@@ -28,7 +32,7 @@ function App() {
         element={<span className="page-message">Welcome to contact page</span>}
       />
     </Routes>
-  );
+  </>
 }
 
 export default App;
