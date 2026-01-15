@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef } from "react"
 import transitionManagement from "../../Zustand/transitionManagement"
 import { useNavigate } from "react-router-dom"
+import './TransitionContainer.css'
 
 export default function TransitionContainer(){
 
@@ -18,8 +19,10 @@ export default function TransitionContainer(){
         return tile.current.addEventListener("animationend", handleNavigate)
     }, [targetPath, handleNavigate])
 
-    return <div className="loading-container">
+    return <div className="transition-container">
         <div className="tile" ref={tile}></div>
-        <span className="loading-message">Loading...</span>
+        <div className="transition-content">
+            <span className="loading-message">Loading...</span>
+        </div>
     </div>
 }

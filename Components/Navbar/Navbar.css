@@ -1,0 +1,18 @@
+.navigation-bar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 150px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2vw;
+}
+
+.navigation-bar .item{
+    color: #F1F1F1;
+    text-transform: uppercase;
+    font-size: clamp(20px, 3vw, 30px);
+    cursor: pointer;
+}

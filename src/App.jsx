@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
-import MenuButton from "../Components/MenuButton/MenuButton";
 import TransitionContainer from "../Components/TransitionContainer/TransitionContainer";
+import Navbar from "../Components/Navbar/Navbar";
 
 function App() {
   /*
@@ -16,7 +16,7 @@ function App() {
 */
 
   return <>
-    <MenuButton /> 
+    <Navbar />
     <TransitionContainer />
     <Routes>
       <Route
