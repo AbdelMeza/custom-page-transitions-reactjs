@@ -1,38 +1,45 @@
+// Import routing components from React Router
 import { Route, Routes } from "react-router-dom";
+
+// Import global UI components
 import TransitionContainer from "../Components/TransitionContainer/TransitionContainer";
 import Navbar from "../Components/Navbar/Navbar";
 
+// Import lazy loading utility from React
+import { lazy } from "react";
+
 function App() {
-  /*
-  Lazy loading is recommended when your application has many pages.
-  It allows loading each page only when it is needed, which improves
-  the initial loading performance.
+  // Lazy load pages
+  // Each page will be loaded only when its route is visited
+  const HomePage = lazy(() => import("../Pages/HomePage"));
+  const AboutPage = lazy(() => import("../Pages/AboutPage"));
+  const WorkPage = lazy(() => import("../Pages/WorkPage"));
+  const ContactPage = lazy(() => import("../Pages/ContactPage"));
 
-  Example:
-  const HomePage = lazy(() => import("path/to/HomePage"))
+  return (
+    <>
+      {/* Navbar displayed on all pages */}
+      <Navbar />
 
-  In this case, we intentionally avoid using <Suspense> with a fallback
-  because it would interfere with our custom page loading animation.
-*/
+      {/* Container used for page transitions / loaders */}
+      <TransitionContainer />
 
-  return <>
-    <Navbar />
-    <TransitionContainer />
-    <Routes>
-      <Route
-        path="/"
-        element={<span className="page-message">Welcome to home page</span>}
-      />
-      <Route
-        path="/about"
-        element={<span className="page-message">Welcome to about page</span>}
-      />
-      <Route
-        path="/contact"
-        element={<span className="page-message">Welcome to contact page</span>}
-      />
-    </Routes>
-  </>
+      {/* Application routes */}
+      <Routes>
+        {/* Home page */}
+        <Route path="/" element={<HomePage />} />
+
+        {/* About page */}
+        <Route path="/about" element={<AboutPage />} />
+
+        {/* Work / Projects page */}
+        <Route path="/work" element={<WorkPage />} />
+
+        {/* Contact page */}
+        <Route path="/contact" element={<ContactPage />} />
+      </Routes>
+    </>
+  );
 }
 
 export default App;
